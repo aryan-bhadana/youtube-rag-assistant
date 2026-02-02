@@ -71,26 +71,26 @@ HUGGINGFACEHUB_API_TOKEN=your_api_key_here
 ```bash
 streamlit run ui.py
 ```
-Enter:
+## Enter:
 - A YouTube video ID
 - A natural language question
 
-The app will return:
+## The app will return:
 - An answer grounded in the transcript
 - The transcript chunks used as sources
 
-🧠 Example Questions
+## 🧠 Example Questions
 - What challenges are discussed in this video?
 - Is nuclear fusion mentioned?
 - What problem does the speaker try to solve?
 
-🔮 Future Improvements
+## 🔮 Future Improvements
 - Multi-video ingestion
 - Timestamp-level source attribution
 - Conversation memory
 - Evaluation metrics for retrieval quality
 
-📌 Why This Project?
+## 📌 Why This Project?
 This project demonstrates how modern RAG systems are built in practice,
 focusing on:
 - Retrieval quality (MMR)
