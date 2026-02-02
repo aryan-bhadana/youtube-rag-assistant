@@ -58,7 +58,9 @@ if ask_button:
         doc.metadata["chunk_id"] = i
         doc.metadata["video_id"] = video_id
 
-    PERSIST_DIR = "faiss_index"
+    os.makedirs("faiss_index", exist_ok=True)
+    
+    PERSIST_DIR = f"faiss_index/{video_id}"
 
     if os.path.exists(PERSIST_DIR):
         vector_store = FAISS.load_local(
