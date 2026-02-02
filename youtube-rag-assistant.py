@@ -75,4 +75,3 @@ Question: {question}
             "Is the topic of nuclear fusion discussed in this video? If yes, what was discussed?"
         )
     )
-  
