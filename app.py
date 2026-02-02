@@ -1,7 +1,3 @@
-"""
-YouTube RAG Assistant
-"""
-
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -12,8 +8,6 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough, Runn
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
-
-PERSIST_DIR = "faiss_index"
 
 load_dotenv()
 
@@ -40,6 +34,9 @@ if __name__ == "__main__":
     for i, doc in enumerate(chunks):
         doc.metadata["chunk_id"] = i
         doc.metadata["video_id"] = video_id
+
+    os.makedirs("faiss_index", exist_ok=True)
+    PERSIST_DIR = f"faiss_index/{video_id}"
 
     if os.path.exists(PERSIST_DIR):
         print("Loading existing FAISS index...")
@@ -90,7 +87,7 @@ Question: {question}
         | StrOutputParser()
     )
 
-    question = "What challenges are discussed in this video?"
+    question = input("Enter your question: ").strip()
 
     retrieved_docs = retriever.invoke(question)
     answer = chain.invoke(question)
